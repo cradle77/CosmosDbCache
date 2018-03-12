@@ -27,10 +27,10 @@ namespace SampleWebApi
 
             services.AddDistributedCosmosDbCache(config =>
             {
-                config.ServiceUri = "https://marcodes.documents.azure.com:443/";
-                config.AuthKey = "hvvBTOLX23m7TywImce4z2YfRApXO1plyL0EGXXC26E1GA6D499XlpGoj7hGb1dL9mmtNRNl6bN6vhlT1hOo7g==";
-                config.DatabaseName = "sampleCacheDb";
-                config.CollectionName = "cachedItems";
+                config.ServiceUri = Configuration.GetSection("cosmos").GetValue<string>("serviceUri");
+                config.AuthKey = Configuration.GetSection("cosmos").GetValue<string>("authKey");
+                config.DatabaseName = Configuration.GetSection("cosmos").GetValue<string>("databaseName");
+                config.CollectionName = Configuration.GetSection("cosmos").GetValue<string>("collectionName");
             });
         }
 
