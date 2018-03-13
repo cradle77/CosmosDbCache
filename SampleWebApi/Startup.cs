@@ -31,6 +31,8 @@ namespace SampleWebApi
                 config.AuthKey = Configuration.GetSection("cosmos").GetValue<string>("authKey");
                 config.DatabaseName = Configuration.GetSection("cosmos").GetValue<string>("databaseName");
                 config.CollectionName = Configuration.GetSection("cosmos").GetValue<string>("collectionName");
+
+                config.PreferredLocations.Add("North Europe");
             });
         }
 

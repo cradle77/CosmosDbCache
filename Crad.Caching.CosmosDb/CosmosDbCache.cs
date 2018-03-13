@@ -39,7 +39,7 @@ namespace Crad.Caching.CosmosDb
 
         public byte[] Get(string key)
         {
-            return this.GetAsync(key).GetAwaiter().GetResult();
+            return Task.Run(() => this.GetAsync(key)).GetAwaiter().GetResult();
         }
 
         public async Task<byte[]> GetAsync(string key, CancellationToken token = default(CancellationToken))
@@ -60,7 +60,7 @@ namespace Crad.Caching.CosmosDb
 
         public void Refresh(string key)
         {
-            this.RefreshAsync(key).GetAwaiter().GetResult();
+            Task.Run(() => this.RefreshAsync(key)).GetAwaiter().GetResult();
         }
 
         public async Task RefreshAsync(string key, CancellationToken token = default(CancellationToken))
@@ -74,7 +74,7 @@ namespace Crad.Caching.CosmosDb
 
         public void Remove(string key)
         {
-            this.RemoveAsync(key).GetAwaiter().GetResult();
+            Task.Run(() => this.RemoveAsync(key)).GetAwaiter().GetResult();
         }
 
         public async Task RemoveAsync(string key, CancellationToken token = default(CancellationToken))
@@ -86,7 +86,7 @@ namespace Crad.Caching.CosmosDb
 
         public void Set(string key, byte[] value, DistributedCacheEntryOptions options)
         {
-            this.SetAsync(key, value, options).GetAwaiter().GetResult();
+            Task.Run(() => this.SetAsync(key, value, options)).GetAwaiter().GetResult();
         }
 
         public async Task SetAsync(string key, byte[] value, DistributedCacheEntryOptions options, CancellationToken token = default(CancellationToken))

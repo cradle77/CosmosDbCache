@@ -28,7 +28,7 @@ namespace SampleWebApi.Controllers
 
             if (value == null)
             {
-                result = new string[] { "value1", "value2", "value3" };
+                result = Enumerable.Range(1, 2000).Select(x => $"value{x}").ToArray();
 
                 await _cache.SetStringAsync("mydata", JsonConvert.SerializeObject(result), new DistributedCacheEntryOptions()
                 {
